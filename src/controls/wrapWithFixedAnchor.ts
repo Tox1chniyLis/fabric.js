@@ -1,8 +1,4 @@
-import type {
-  Transform,
-  TransformActionHandler,
-  TPointerEvent,
-} from '../EventTypeDefs';
+import type { Transform, TransformActionHandler } from '../EventTypeDefs';
 
 /**
  * Wrap an action handler with saving/restoring object position on the transform.
@@ -14,42 +10,17 @@ export function wrapWithFixedAnchor<T extends Transform>(
   actionHandler: TransformActionHandler<T>,
 ) {
   return ((eventData, transform, x, y) => {
-    const target = transform.target;
-
-    const curTransform = {
-      ...transform,
-    };
-
-    if (isCtrlAction(eventData)) {
-      target.set('centeredScaling', true);
-      curTransform.originX = 'center';
-      curTransform.originY = 'center';
-    }
-
-    const originX = curTransform.originX;
-    const originY = curTransform.originY;
-
-    const centerPoint = target.getRelativeCenterPoint();
-    const constraint = target.translateToOriginPoint(
-      centerPoint,
-      originX,
-      originY,
-    );
-    const actionPerformed = actionHandler(eventData, curTransform, x, y);
+    const { target, originX, originY } = transform,
+      centerPoint = target.getRelativeCenterPoint(),
+      constraint = target.translateToOriginPoint(centerPoint, originX, originY),
+      actionPerformed = actionHandler(eventData, transform, x, y);
     // flipping requires to change the transform origin, so we read from the mutated transform
     // instead of leveraging the one destructured before
     target.setPositionByOrigin(
       constraint,
-      curTransform.originX,
-      curTransform.originY,
+      transform.originX,
+      transform.originY,
     );
-
-    target.centeredScaling = false;
-
     return actionPerformed;
   }) as TransformActionHandler<T>;
-}
-
-function isCtrlAction(eventData: TPointerEvent): boolean {
-  return eventData.ctrlKey;
 }
