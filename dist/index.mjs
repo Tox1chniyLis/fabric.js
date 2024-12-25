@@ -8203,19 +8203,27 @@ const wrapWithFireEvent = (eventName, actionHandler, extraEventInfo) => {
  */
 function wrapWithFixedAnchor(actionHandler) {
   return (eventData, transform, x, y) => {
-    const {
-        target,
-        originX,
-        originY
-      } = transform,
-      centerPoint = target.getRelativeCenterPoint(),
-      constraint = target.translateToOriginPoint(centerPoint, originX, originY),
-      actionPerformed = actionHandler(eventData, transform, x, y);
+    const target = transform.target;
+    const curTransform = _objectSpread2({}, transform);
+    if (isCtrlAction(eventData)) {
+      target.set('centeredScaling', true);
+      curTransform.originX = 'center';
+      curTransform.originY = 'center';
+    }
+    const originX = curTransform.originX;
+    const originY = curTransform.originY;
+    const centerPoint = target.getRelativeCenterPoint();
+    const constraint = target.translateToOriginPoint(centerPoint, originX, originY);
+    const actionPerformed = actionHandler(eventData, transform, x, y);
     // flipping requires to change the transform origin, so we read from the mutated transform
     // instead of leveraging the one destructured before
     target.setPositionByOrigin(constraint, transform.originX, transform.originY);
+    target.centeredScaling = false;
     return actionPerformed;
   };
+}
+function isCtrlAction(eventData) {
+  return eventData.ctrlKey;
 }
 
 /**
@@ -9247,7 +9255,7 @@ const createObjectDefaultControls = () => ({
     actionHandler: rotationWithSnapping,
     cursorStyleHandler: rotationStyleHandler,
     offsetY: -40,
-    withConnection: true,
+    withConnection: false,
     actionName: ROTATE
   }),
   mlr: new Control({
@@ -9256,7 +9264,7 @@ const createObjectDefaultControls = () => ({
     actionHandler: rotationWithSnapping,
     cursorStyleHandler: rotationStyleHandler,
     offsetX: -40,
-    withConnection: true,
+    withConnection: false,
     actionName: ROTATE
   }),
   mbr: new Control({
@@ -9265,7 +9273,7 @@ const createObjectDefaultControls = () => ({
     actionHandler: rotationWithSnapping,
     cursorStyleHandler: rotationStyleHandler,
     offsetY: 40,
-    withConnection: true,
+    withConnection: false,
     actionName: ROTATE
   }),
   mrr: new Control({
@@ -9274,7 +9282,7 @@ const createObjectDefaultControls = () => ({
     actionHandler: rotationWithSnapping,
     cursorStyleHandler: rotationStyleHandler,
     offsetX: 40,
-    withConnection: true,
+    withConnection: false,
     actionName: ROTATE
   })
 });

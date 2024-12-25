@@ -66,7 +66,7 @@ const createObjectDefaultControls = () => ({
     actionHandler: rotationWithSnapping,
     cursorStyleHandler: rotationStyleHandler,
     offsetY: -40,
-    withConnection: true,
+    withConnection: false,
     actionName: ROTATE
   }),
   mlr: new Control({
@@ -75,7 +75,7 @@ const createObjectDefaultControls = () => ({
     actionHandler: rotationWithSnapping,
     cursorStyleHandler: rotationStyleHandler,
     offsetX: -40,
-    withConnection: true,
+    withConnection: false,
     actionName: ROTATE
   }),
   mbr: new Control({
@@ -84,7 +84,7 @@ const createObjectDefaultControls = () => ({
     actionHandler: rotationWithSnapping,
     cursorStyleHandler: rotationStyleHandler,
     offsetY: 40,
-    withConnection: true,
+    withConnection: false,
     actionName: ROTATE
   }),
   mrr: new Control({
@@ -93,7 +93,7 @@ const createObjectDefaultControls = () => ({
     actionHandler: rotationWithSnapping,
     cursorStyleHandler: rotationStyleHandler,
     offsetX: 40,
-    withConnection: true,
+    withConnection: false,
     actionName: ROTATE
   })
 });

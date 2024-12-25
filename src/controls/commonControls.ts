@@ -78,7 +78,7 @@ export const createObjectDefaultControls = () => ({
     actionHandler: rotationWithSnapping,
     cursorStyleHandler: rotationStyleHandler,
     offsetY: -40,
-    withConnection: true,
+    withConnection: false,
     actionName: ROTATE,
   }),
 
@@ -88,7 +88,7 @@ export const createObjectDefaultControls = () => ({
     actionHandler: rotationWithSnapping,
     cursorStyleHandler: rotationStyleHandler,
     offsetX: -40,
-    withConnection: true,
+    withConnection: false,
     actionName: ROTATE,
   }),
 
@@ -98,7 +98,7 @@ export const createObjectDefaultControls = () => ({
     actionHandler: rotationWithSnapping,
     cursorStyleHandler: rotationStyleHandler,
     offsetY: 40,
-    withConnection: true,
+    withConnection: false,
     actionName: ROTATE,
   }),
 
@@ -108,7 +108,7 @@ export const createObjectDefaultControls = () => ({
     actionHandler: rotationWithSnapping,
     cursorStyleHandler: rotationStyleHandler,
     offsetX: 40,
-    withConnection: true,
+    withConnection: false,
     actionName: ROTATE,
   }),
 });
