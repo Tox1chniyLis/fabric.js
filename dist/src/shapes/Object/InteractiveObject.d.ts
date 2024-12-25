@@ -35,7 +35,7 @@ export declare class InteractiveFabricObject<Props extends TFabricObjectProps = 
     cornerColor: string;
     cornerStrokeColor: string;
     cornerSecondColor: string;
-    cornerStyle: 'rect' | 'circle' | 'roundedPoint' | 'point';
+    cornerStyle: 'rect' | 'circle' | 'roundedPoint' | 'point' | 'multiPoint';
     cornerDashArray: number[] | null;
     hasControls: boolean;
     borderColor: string;

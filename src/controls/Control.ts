@@ -354,6 +354,17 @@ export class Control {
   ) {
     styleOverride = styleOverride || {};
     switch (styleOverride.cornerStyle || fabricObject.cornerStyle) {
+      case 'multiPoint': 
+      renderPointControl.call(
+         this,
+          ctx,
+          left,
+          top,
+          styleOverride,
+          fabricObject,
+      )
+      break;
+
       case 'point': 
       renderPointControl.call(
          this,

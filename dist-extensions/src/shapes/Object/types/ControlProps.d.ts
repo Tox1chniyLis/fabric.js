@@ -39,7 +39,7 @@ export interface ControlProps {
      * @default 'rect'
      * @deprecated
      */
-    cornerStyle: 'rect' | 'circle' | 'roundedPoint' | 'point';
+    cornerStyle: 'rect' | 'circle' | 'roundedPoint' | 'point' | 'multiPoint';
     /**
      * Array specifying dash pattern of an object's control (hasBorder must be true)
      * @since 1.6.2

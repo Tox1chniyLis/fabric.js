@@ -190,7 +190,7 @@ export declare class Path<Props extends TOptions<PathProps> = Partial<PathProps>
         transparentCorners: boolean;
         cornerColor: string;
         cornerStrokeColor: string;
-        cornerStyle: "rect" | "circle" | "roundedPoint" | "point";
+        cornerStyle: "rect" | "circle" | "roundedPoint" | "point" | "multiPoint";
         cornerDashArray: number[] | null;
         padding: number;
         hasControls: boolean;

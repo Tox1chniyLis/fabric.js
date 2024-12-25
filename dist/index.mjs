@@ -8245,6 +8245,13 @@ const changeObjectWidth = (eventData, transform, x, y) => {
 };
 const changeWidth = wrapWithFireEvent(RESIZING, wrapWithFixedAnchor(changeObjectWidth));
 
+function renderMultiPointControl(ctx, left, top, styleOverride, fabricObject) {
+  if (this.actionName == ROTATE) {
+    renderPointControl.apply(this, [ctx, left, top, styleOverride, fabricObject]);
+  } else {
+    renderRoundedPointControl.apply(this, [ctx, left, top, styleOverride, fabricObject]);
+  }
+}
 function renderPointControl(ctx, left, top, styleOverride, fabricObject) {
   styleOverride = styleOverride || {};
   const xSize = this.sizeX || styleOverride.cornerSize || fabricObject.cornerSize;
@@ -8662,6 +8669,9 @@ class Control {
   render(ctx, left, top, styleOverride, fabricObject) {
     styleOverride = styleOverride || {};
     switch (styleOverride.cornerStyle || fabricObject.cornerStyle) {
+      case 'multiPoint':
+        renderPointControl.call(this, ctx, left, top, styleOverride, fabricObject);
+        break;
       case 'point':
         renderPointControl.call(this, ctx, left, top, styleOverride, fabricObject);
         break;
@@ -25638,6 +25648,9 @@ var index = /*#__PURE__*/Object.freeze({
   getLocalPoint: getLocalPoint,
   polyActionHandler: polyActionHandler,
   renderCircleControl: renderCircleControl,
+  renderMultiPointControl: renderMultiPointControl,
+  renderPointControl: renderPointControl,
+  renderRoundedPointControl: renderRoundedPointControl,
   renderSquareControl: renderSquareControl,
   rotationStyleHandler: rotationStyleHandler,
   rotationWithSnapping: rotationWithSnapping,

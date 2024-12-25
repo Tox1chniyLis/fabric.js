@@ -68,7 +68,7 @@ export class InteractiveFabricObject<
   declare cornerColor: string;
   declare cornerStrokeColor: string;
   declare cornerSecondColor: string;
-  declare cornerStyle: 'rect' | 'circle' | 'roundedPoint' | 'point';
+  declare cornerStyle: 'rect' | 'circle' | 'roundedPoint' | 'point' | 'multiPoint';
   declare cornerDashArray: number[] | null;
   declare hasControls: boolean;
 

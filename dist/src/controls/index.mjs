@@ -1,5 +1,5 @@
 export { changeWidth } from './changeWidth.mjs';
-export { renderCircleControl, renderSquareControl } from './controlRendering.mjs';
+export { renderCircleControl, renderMultiPointControl, renderPointControl, renderRoundedPointControl, renderSquareControl } from './controlRendering.mjs';
 export { createObjectDefaultControls, createResizeControls, createTextboxDefaultControls } from './commonControls.mjs';
 export { dragHandler } from './drag.mjs';
 export { createPolyActionHandler, createPolyControls, createPolyPositionHandler, factoryPolyActionHandler, polyActionHandler } from './polyControl.mjs';

@@ -1,6 +1,13 @@
-import { twoMathPi, STROKE, FILL } from '../constants.mjs';
+import { ROTATE, twoMathPi, STROKE, FILL } from '../constants.mjs';
 import { degreesToRadians } from '../util/misc/radiansDegreesConversion.mjs';
 
+function renderMultiPointControl(ctx, left, top, styleOverride, fabricObject) {
+  if (this.actionName == ROTATE) {
+    renderPointControl.apply(this, [ctx, left, top, styleOverride, fabricObject]);
+  } else {
+    renderRoundedPointControl.apply(this, [ctx, left, top, styleOverride, fabricObject]);
+  }
+}
 function renderPointControl(ctx, left, top, styleOverride, fabricObject) {
   styleOverride = styleOverride || {};
   const xSize = this.sizeX || styleOverride.cornerSize || fabricObject.cornerSize;
@@ -150,5 +157,5 @@ function renderSquareControl(ctx, left, top, styleOverride, fabricObject) {
   ctx.restore();
 }
 
-export { renderCircleControl, renderPointControl, renderRoundedPointControl, renderSquareControl };
+export { renderCircleControl, renderMultiPointControl, renderPointControl, renderRoundedPointControl, renderSquareControl };
 //# sourceMappingURL=controlRendering.mjs.map
