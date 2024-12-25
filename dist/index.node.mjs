@@ -5220,12 +5220,13 @@ const interactiveObjectDefaultValues = {
   cornerSize: 13,
   touchCornerSize: 24,
   transparentCorners: true,
-  cornerColor: 'rgb(178,204,255)',
-  cornerStrokeColor: '',
-  cornerStyle: 'rect',
+  cornerColor: '#7165FF',
+  cornerStyle: 'multiPoint',
+  cornerStrokeColor: '#ffffff',
+  cornerSecondColor: '#7165FF',
   cornerDashArray: null,
   hasControls: true,
-  borderColor: 'rgb(178,204,255)',
+  borderColor: '#7165FF',
   borderDashArray: null,
   borderOpacityWhenMoving: 0.4,
   borderScaleFactor: 1,
@@ -9302,6 +9303,33 @@ const createObjectDefaultControls = () => ({
     actionHandler: rotationWithSnapping,
     cursorStyleHandler: rotationStyleHandler,
     offsetY: -40,
+    withConnection: true,
+    actionName: ROTATE
+  }),
+  mlr: new Control({
+    x: -0.5,
+    y: 0,
+    actionHandler: rotationWithSnapping,
+    cursorStyleHandler: rotationStyleHandler,
+    offsetX: -40,
+    withConnection: true,
+    actionName: ROTATE
+  }),
+  mbr: new Control({
+    x: 0,
+    y: 0.5,
+    actionHandler: rotationWithSnapping,
+    cursorStyleHandler: rotationStyleHandler,
+    offsetY: 40,
+    withConnection: true,
+    actionName: ROTATE
+  }),
+  mrr: new Control({
+    x: 0.5,
+    y: 0,
+    actionHandler: rotationWithSnapping,
+    cursorStyleHandler: rotationStyleHandler,
+    offsetX: 40,
     withConnection: true,
     actionName: ROTATE
   })

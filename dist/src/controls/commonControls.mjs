@@ -68,6 +68,33 @@ const createObjectDefaultControls = () => ({
     offsetY: -40,
     withConnection: true,
     actionName: ROTATE
+  }),
+  mlr: new Control({
+    x: -0.5,
+    y: 0,
+    actionHandler: rotationWithSnapping,
+    cursorStyleHandler: rotationStyleHandler,
+    offsetX: -40,
+    withConnection: true,
+    actionName: ROTATE
+  }),
+  mbr: new Control({
+    x: 0,
+    y: 0.5,
+    actionHandler: rotationWithSnapping,
+    cursorStyleHandler: rotationStyleHandler,
+    offsetY: 40,
+    withConnection: true,
+    actionName: ROTATE
+  }),
+  mrr: new Control({
+    x: 0.5,
+    y: 0,
+    actionHandler: rotationWithSnapping,
+    cursorStyleHandler: rotationStyleHandler,
+    offsetX: 40,
+    withConnection: true,
+    actionName: ROTATE
   })
 });
 const createResizeControls = () => ({
