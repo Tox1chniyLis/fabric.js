@@ -3,9 +3,9 @@ import { degreesToRadians } from '../util/misc/radiansDegreesConversion.mjs';
 
 function renderMultiPointControl(ctx, left, top, styleOverride, fabricObject) {
   if (this.actionName == ROTATE) {
-    renderPointControl.apply(this, [ctx, left, top, styleOverride, fabricObject]);
-  } else {
     renderRoundedPointControl.apply(this, [ctx, left, top, styleOverride, fabricObject]);
+  } else {
+    renderPointControl.apply(this, [ctx, left, top, styleOverride, fabricObject]);
   }
 }
 function renderPointControl(ctx, left, top, styleOverride, fabricObject) {
@@ -17,7 +17,7 @@ function renderPointControl(ctx, left, top, styleOverride, fabricObject) {
   let size = undefined;
   ctx.save();
   ctx.fillStyle = styleOverride.cornerSecondColor || fabricObject.cornerSecondColor;
-  ctx.strokeStyle = styleOverride.cornerStrokeColor || fabricObject.cornerStrokeColor || "";
+  ctx.strokeStyle = styleOverride.cornerStrokeColor || fabricObject.cornerStrokeColor || '';
   if (xSize > ySize) {
     size = xSize;
     ctx.scale(1.0, ySize / xSize);
@@ -46,7 +46,7 @@ function renderRoundedPointControl(ctx, left, top, styleOverride, fabricObject) 
   let size = undefined;
   ctx.save();
   ctx.fillStyle = styleOverride.cornerSecondColor || fabricObject.cornerSecondColor;
-  ctx.strokeStyle = styleOverride.cornerStrokeColor || fabricObject.cornerStrokeColor || "";
+  ctx.strokeStyle = styleOverride.cornerStrokeColor || fabricObject.cornerStrokeColor || '';
   if (xSize > ySize) {
     size = xSize;
     ctx.scale(1.0, ySize / xSize);
@@ -59,17 +59,17 @@ function renderRoundedPointControl(ctx, left, top, styleOverride, fabricObject) 
     size = xSize;
   }
   ctx.beginPath();
-  ctx.fillStyle = styleOverride.cornerStrokeColor || fabricObject.cornerStrokeColor || "";
+  ctx.fillStyle = styleOverride.cornerStrokeColor || fabricObject.cornerStrokeColor || '';
   ctx.arc(myLeft, myTop, size / 1, 0, Math.PI * 2, false);
   ctx.fill();
   ctx.closePath();
   ctx.beginPath();
-  ctx.fillStyle = styleOverride.cornerSecondColor || fabricObject.cornerSecondColor || "";
+  ctx.fillStyle = styleOverride.cornerSecondColor || fabricObject.cornerSecondColor || '';
   ctx.arc(myLeft, myTop, size / 2, 0, Math.PI * 2, false);
   ctx.fill();
   ctx.closePath();
   ctx.beginPath();
-  ctx.strokeStyle = styleOverride.cornerSecondColor || fabricObject.cornerSecondColor || "";
+  ctx.strokeStyle = styleOverride.cornerSecondColor || fabricObject.cornerSecondColor || '';
   ctx.arc(myLeft, myTop, size / 1.2, 0, Math.PI * 2, false);
   ctx.stroke();
   ctx.restore();

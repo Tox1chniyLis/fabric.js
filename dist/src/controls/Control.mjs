@@ -3,7 +3,7 @@ import { Intersection } from '../Intersection.mjs';
 import { Point } from '../Point.mjs';
 import { SCALE } from '../constants.mjs';
 import { multiplyTransformMatrixArray, createTranslateMatrix, createRotateMatrix, createScaleMatrix } from '../util/misc/matrix.mjs';
-import { renderSquareControl, renderCircleControl, renderRoundedPointControl, renderPointControl } from './controlRendering.mjs';
+import { renderSquareControl, renderCircleControl, renderRoundedPointControl, renderPointControl, renderMultiPointControl } from './controlRendering.mjs';
 
 class Control {
   constructor(options) {
@@ -274,7 +274,7 @@ class Control {
     styleOverride = styleOverride || {};
     switch (styleOverride.cornerStyle || fabricObject.cornerStyle) {
       case 'multiPoint':
-        renderPointControl.call(this, ctx, left, top, styleOverride, fabricObject);
+        renderMultiPointControl.call(this, ctx, left, top, styleOverride, fabricObject);
         break;
       case 'point':
         renderPointControl.call(this, ctx, left, top, styleOverride, fabricObject);
