@@ -35,13 +35,13 @@ export function wrapWithFixedAnchor<T extends Transform>(
       originX,
       originY,
     );
-    const actionPerformed = actionHandler(eventData, transform, x, y);
+    const actionPerformed = actionHandler(eventData, curTransform, x, y);
     // flipping requires to change the transform origin, so we read from the mutated transform
     // instead of leveraging the one destructured before
     target.setPositionByOrigin(
       constraint,
-      transform.originX,
-      transform.originY,
+      curTransform.originX,
+      curTransform.originY,
     );
 
     target.centeredScaling = false;
