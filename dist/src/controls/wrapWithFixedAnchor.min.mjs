@@ -1,2 +1,2 @@
-import{objectSpread2 as n}from"../../_virtual/_rollupPluginBabelHelpers.min.mjs";function e(e){return(i,r,t,o)=>{const g=r.target,c=n({},r);(function(n){return n.ctrlKey})(i)&&(g.set("centeredScaling",!0),c.originX="center",c.originY="center");const l=c.originX,a=c.originY,s=g.getRelativeCenterPoint(),u=g.translateToOriginPoint(s,l,a),p=e(i,c,t,o);return g.setPositionByOrigin(u,c.originX,c.originY),g.centeredScaling=!1,p}}export{e as wrapWithFixedAnchor};
+function i(i){return(n,t,r,o)=>{const{target:e,originX:g,originY:a}=t,s=e.getRelativeCenterPoint(),u=e.translateToOriginPoint(s,g,a),P=i(n,t,r,o);return e.setPositionByOrigin(u,t.originX,t.originY),P}}export{i as wrapWithFixedAnchor};
 //# sourceMappingURL=wrapWithFixedAnchor.min.mjs.map
