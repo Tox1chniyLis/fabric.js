@@ -2,6 +2,7 @@ import { FILL, STROKE, twoMathPi } from '../constants';
 import type { InteractiveFabricObject } from '../shapes/Object/InteractiveObject';
 import { degreesToRadians } from '../util/misc/radiansDegreesConversion';
 import type { Control } from './Control';
+import { ROTATE } from '../constants';
 
 export type ControlRenderingStyleOverride = Partial<
   Pick<
@@ -25,6 +26,33 @@ export type ControlRenderer<
   styleOverride: ControlRenderingStyleOverride,
   fabricObject: O,
 ) => void;
+
+export function renderMultiPointControl(
+  this: Control,
+  ctx: CanvasRenderingContext2D,
+  left: number,
+  top: number,
+  styleOverride: ControlRenderingStyleOverride,
+  fabricObject: InteractiveFabricObject
+) {
+  if (this.actionName == ROTATE) {
+    renderPointControl.apply(this, [
+      ctx,
+      left,
+      top,
+      styleOverride,
+      fabricObject,
+    ]);
+  } else {
+    renderRoundedPointControl.apply(this, [
+      ctx,
+      left,
+      top,
+      styleOverride,
+      fabricObject,
+    ]);
+  }
+}
 
 export function renderPointControl(
     this: Control,
